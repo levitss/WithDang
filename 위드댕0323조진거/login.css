@@ -1,0 +1,249 @@
+* {
+    margin: 0; padding: 0; box-sizing: border-box; 
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif;
+}
+
+@font-face {
+    font-family: 'GmarketSansTTFBold';
+    src: url(./fonts/GmarketSansTTFBold.woff) format('woff');
+}
+
+body {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh;
+    background-color: #a1e1dc;
+}
+
+header {
+    position: fixed; 
+    left: 0; top: 0; width: 100%; padding: 20px 100px; 
+    background: #ed8b9e; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    z-index: 99;
+    font-family:'GmarketSansTTFBold';
+}
+
+.logo {
+    font-size: 3em; 
+    color: #fff; 
+    user-select: none;
+}
+
+nav {
+    font: 'GmarketSansTTFBold';
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.2em; 
+    font-family: sans-serif;
+    font: bold;
+    color: #fff;    /*메뉴폰트컬러*/
+    font-weight: 50; 
+    margin-left: 50px;
+}
+/*메뉴바 효과 설정*/
+.navigation a::after {
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    bottom: -5px; 
+    width: 100%; 
+    height: 3px; 
+    background: #a1e1dc; /*메뉴 하단 마우스오버효과*/
+    border-radius: 5px; 
+    transform: scaleX(0); 
+    transform-origin: right; 
+    transition: transform 0.5s;
+}
+
+.navigation a:hover::after {
+    transform: scaleX(1); 
+    transform-origin: left;
+}
+
+.btnLogin-popup {
+    width: 130px; 
+    height: 50px; 
+    background: transparent;
+    border: 2px solid #fff; /* 내비 로그인 라운드*/
+    border-radius: 6px; 
+    outline: none; 
+    cursor: pointer; 
+    font-size: 1.1em; 
+    color: #fff; /*내비 로그인폰트*/
+    font-weight: 500; 
+    margin-left: 40px; 
+    transition: 0.5s;
+}
+/*로그인 마우스오버효과 반짝*/
+.btnLogin-popup:hover {
+    background: #fff; 
+    color: #ed8b9e;
+}
+
+/*로그인 팝업창 사이드 쉐도우,라인*/
+.wrapper {
+    position: relative; 
+    width: 440px; 
+    height: 440px; 
+    background: #fff; 
+    border: 2px solid #fff;
+    ;
+    ; 
+    border-radius: 20px; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);  /*그림자컬러*/
+    overflow: hidden; 
+    transform: scale(0); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    transition: transform 0.5s ease, height 0.2s ease;
+}
+
+.wrapper.active {
+    height: 520px;
+}
+
+.wrapper.active-popup {
+    transform: scale(1);
+}
+
+.form-box {
+    width: 100%; 
+    padding: 40px;
+}
+
+.form-box.login {
+    transform: translateX(0); 
+    transition: transform 0.18s ease;
+}
+
+.wrapper.active .form-box.login {
+    transition: none; 
+    transform: translateX(-400px);
+}
+
+.form-box.register {position: absolute; 
+    transform: translateX(400px); 
+    transition: none;
+}
+
+.wrapper.active .form-box.register  {
+    transform: translateX(0); 
+    transition: transform 0.18s ease;
+}
+
+/*로그인팝업창 X부분*/
+.icon-close {
+    position: absolute; 
+    right: 0; top: 0; width: 45px; height: 45px; 
+    background: #a1e1dc; font-size: 2em; 
+    color: #fff; display: flex; justify-content: center; 
+    align-items: center; border-bottom-left-radius: 20px; 
+    cursor: pointer; z-index: 1;
+}
+
+.form-box h2 {
+    font-size: 2em; 
+    color: #ed8b9e; 
+    text-align: center;
+}
+
+.input-box {
+    position: relative; 
+    width: 100%; height: 50px; 
+    border-bottom: 2px solid #ed8b9e; 
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute; 
+    left: 5px; top: 50%; 
+    transform: translateY(-50%); 
+    font-size: 1em; 
+    color: #ed8b9e; 
+    font-weight: 500; 
+    pointer-events: none; 
+    transition: 0.5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -5px;
+}
+
+
+.input-box input {
+    width: 100%; height: 100%; 
+    background: transparent; 
+    border: none; 
+    outline: none; 
+    font-size: 1em; 
+    color: #ed8b9e; 
+    font-weight: 600; 
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute; 
+    right: 8px; font-size: 1.2em; 
+    color: #ed8b9e; 
+    line-height: 57px;
+}
+
+.remember-forgot {
+    font-size: 0.9em; 
+    color: #ed8b9e; 
+    font-weight: 500; 
+    margin: -15px 0 15px; 
+    display: flex; 
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: #ed8b9e; 
+    margin-right: 6px;
+}
+
+.remember-forgot a {
+    color: #ed8b9e;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%; height: 45px; 
+    background: #ed8b9e; 
+    border-radius: 6px; 
+    border: none; 
+    outline: none; 
+    cursor: pointer; 
+    font-size: 1em; color: #ed8b9e; 
+    font-weight: 500;
+}
+
+.login-register {
+    font-size: 0.9em; 
+    color: #ed8b9e; 
+    font-weight: 500; 
+    text-align: center; 
+    margin: 25px 0 10px;
+}
+
+.login-register p a {
+    color: #ed8b9e; 
+    font-weight: 600;
+}
+ /*뭔지 모름*/
+.login-register p a:hover {
+    text-decoration: underline;
+}
