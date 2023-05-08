@@ -6,10 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.earth.model.MemberVo;
+import com.earth.domain.DogDto;
+import com.earth.domain.MemberInfoDto;
+import com.earth.domain.MemberDto;
 import com.earth.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
@@ -43,13 +47,16 @@ public class MemberController {
 //	}
 	
 	@PostMapping("/join")
-	public String joinPOST(MemberVo member) throws Exception {
+	public String joinPOST(MemberInfoDto member) throws Exception {
 		//회원가입 서비스 실행
 		memberservice.memberJoin(member);
-
+		memberservice.dogInsert(member);
+		
 		return "redirect:/login";
 		
 	}
+	
+	
 	
 	//회원가입 완료 페이지
 //	@GetMapping("/joinHello")
@@ -83,14 +90,34 @@ public class MemberController {
 			
 		} // memberIdChkPOST() 종료	
 		
+		// 닉네임 중복 검사
+				@RequestMapping(value = "/nickNameCheck", method = RequestMethod.POST)
+				@ResponseBody
+				public String membernickNameCheckPOST(String user_nickname) throws Exception{
+					
+					int result = memberservice.nickNameCheck(user_nickname);
+					
+					if(result != 0) {
+						
+						return "fail";	// 중복 닉네임 존재
+						
+					} else {
+						
+						return "success";	// 중복 닉네임 x
+						
+					}	
+					
+					
+				} // memberIdChkPOST() 종료	
+		
 		/* 로그인 */
 	    @RequestMapping(value="/login", method = RequestMethod.POST)
-	    public String loginPOST(HttpServletRequest request, MemberVo member, RedirectAttributes rttr) throws Exception{
+	    public String loginPOST(HttpServletRequest request, MemberInfoDto member, RedirectAttributes rttr, Model m) throws Exception{
 	        
 	    	System.out.println("login 메서드 진입");
 	        System.out.println("전달된 데이터 : " + member);
 	    	HttpSession session = request.getSession();
-	    	MemberVo lvo = memberservice.memberLogin(member);
+	    	MemberInfoDto lvo = memberservice.memberLogin(member);
 	    	
 	    	if(lvo == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
 	            
@@ -101,7 +128,6 @@ public class MemberController {
 	        }
 	  
 	        session.setAttribute("member", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
-	        
 	        return "redirect:/";
        
 //	      return null;

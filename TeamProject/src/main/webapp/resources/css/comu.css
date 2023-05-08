@@ -19,7 +19,7 @@ ul, li {
     margin: 0;
     background-color: var(--bodybackground-color);
     font-family: 'STIX Two Math';
-    background-image: url(/image/back-deco.png);    
+    background-image: /resources/image/back-deco.png;    
   }
   
   a {

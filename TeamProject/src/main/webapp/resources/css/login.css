@@ -1,3 +1,4 @@
+@charset "UTF-8";
 
 
 * {
@@ -139,7 +140,7 @@ a {
     margin-bottom: 20px;
 }
 
-.form form input[type="submit"] {
+.form form input[type="button"] {
     max-width: 100px;
     background: #ed8b9e;
     color: #fff;
@@ -170,8 +171,107 @@ a {
 .return-main {
     position: absolute;
     text-align: center;
-    top: 83%;
-    left: 56%;
-    font-size: 16px;
+    top: 78%;
+    left: 62%;
 
+}
+
+/* 중복이메일 존재하지 않는경우 */
+.user_email_re_1{
+	color : green;
+	display : none;
+	font-size: x-small;
+	position: absolute;
+	top: 325px;
+	right: 50px;
+	
+}
+	/* 중복이메일 존재하는 경우 */
+.user_email_re_2{
+	color : red;
+	display : none;
+	font-size: x-small;
+	position: absolute;
+	top: 325px;
+	right: 50px;
+}
+
+/* 중복닉네임 존재하지 않는경우 */
+.user_nickname_re_1{
+	color : green;
+	display : none;
+	font-size: x-small;
+	position: absolute;
+	top: 205px;
+	right: 50px;
+	
+}
+/* 중복닉네임 존재하는 경우 */
+.user_nickname_re_2{
+	color : red;
+	display : none;
+	font-size: x-small;
+	position: absolute;
+	top: 205px;
+	right: 50px;
+}
+
+/* 유효성 검사 문구 */
+ 
+.final_name_ck{
+	position: absolute;
+    display: none;
+    font-size: x-small;
+    top: 145px;
+}
+.final_nickname_ck{
+	position: absolute;
+    display: none;
+    font-size: x-small;
+    top: 205px;
+}
+.final_email_ck{
+    position: absolute;
+    display: none;
+    font-size: x-small;
+    top: 325px;
+}
+.final_pwck_ck{
+    position: absolute;
+    display: none;
+    font-size: x-small;
+    top: 445px;
+}
+.final_pw_ck{
+    position: absolute;
+    display: none;
+    font-size: x-small;
+    top: 385px;
+}
+
+/* 비밀번호 확인 일치 유효성검사 */
+.pwck_input_re_1{
+        color : green;
+        display : none;    
+        position: absolute;
+        font-size: x-small;
+        top: 445px;
+        right: 50px;
+}
+.pwck_input_re_2{
+        color : red;
+        display : none; 
+        position: absolute;
+        font-size: x-small;
+        top: 445px;
+        right: 50px;   
+}    
+
+/* 로그인 실패시 경고글 */
+.login_warn{
+    font-size: x-small;
+    text-align: center;
+    color : red;
+    position: absolute;
+    bottom: 128px;
 }

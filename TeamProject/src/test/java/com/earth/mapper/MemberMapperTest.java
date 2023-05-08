@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.earth.model.MemberVo;
+import com.earth.domain.MemberInfoDto;
+import com.earth.mapper.MemberMapper;
+import com.earth.domain.MemberDto;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -40,7 +42,7 @@ public class MemberMapperTest {
     @Test
     public void memberLogin() throws Exception{
         
-        MemberVo member = new MemberVo();    // MemberVO 변수 선언 및 초기화
+        MemberInfoDto member = new MemberInfoDto();    // MemberVO 변수 선언 및 초기화
         
         /* 올바른 아이디 비번 입력경우 */
        member.setUser_email("s@s");

@@ -10,7 +10,7 @@ body {
   margin: 0;
   background-color: var(--bodybackground-color);
   font-family: 'STIX Two Math';
-  background-image: url(/image/back-deco.png);
+  background-image: /resources/image/back-deco.png;
 
   
 }
@@ -109,14 +109,16 @@ a {
 
   /*마이페이지*/
   .mypage {
-    max-width: 800px auto;
-    height: 500px auto;
     border: 4px solid white;
     display: flex;
     text-align: center;
     align-items: center;
-    margin: 10px;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    padding: 0;
     background-color: #8b98ac;
+    width: 90%;
 }
 
 .mypage__left {
@@ -172,6 +174,7 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 100%;
 }
 
@@ -180,6 +183,7 @@ a {
     text-align: center;
     align-items: center;   
     width: 100%; 
+    
 }
 
 .mypage__list a {
@@ -187,6 +191,7 @@ a {
     font-size: 18px;
     font-weight: bold;
     width: 100%;
+
 }
 
 .mypage__list a:hover {
@@ -200,65 +205,116 @@ a {
     height: 100%;
     border-radius: 8px;
     padding: 0px;
- 
-
+}
+.user-info, .dog-info {
+    font-size: 1.4rem;
+    }
+    
     /* font-size: 22px;
     text-decoration: 3px underline white;  */
+
+.mypage__mid {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    font-weight: 600;
+    padding-left: 5%;
 }
+.reset-pwd {
+    text-decoration-line: underline;
+    font-size: 13px;
+    color: #ececec;
+    font-weight: 500;
+}
+
+.mypage__right > span {
+  margin: 10%;
+}
+
 .mypage__right {
     width: 100%;
     height: 100%;
+    text-align: left;
+    font-weight: 600;
 }
 
-.mypage__select {
+.mypage__right > p {
+    color: #fff;
+}
+.mypage-dog, .mypage-user {
+    color: #fff;
+    font-size: 16px;
+}
+
+input, textarea {
+    border: none;
+    background-color: #ececece7;
+}
+textarea {
+    width: 80%;
+}
+
+
+/* .mypage__select {
     width: 100%;
     height: 20%;
     border-bottom: 4px solid white;
-    padding-left: 150px;
+    padding: 50px;
     font-size: 18px;
     font-weight: bold;
     display: flex;
-    align-items: center;
-}
+    color: #fff;
+} */
 
-.mypage__detail {
-    width: 100%;
-    height: 70%;
+/* .mypage__detail {
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     padding-left: 150px;
-}
+    color: #fff;
+} */
 
-.mypage__detail > span {
-    font-size: 18px;
+/* .mypage__detail > span {
+    font-size: 17px;
     font-weight: bold;
-    margin-top: 20px;
-}
+    margin-top: 15px;
+    
+} */
 
 .mypage__update {
-    border: 1px solid gray;
-    border-radius: 15px;
-    width: 100px;
-    height: 30px;
-    background-color: #84d3ce;
     text-align: center;
-    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.mypage__update > a {
-    color: black;
+.update_btn {
+    border: none;
+    border-radius: 10px;
+    background-color: #84d3ce;
+    font-size: 20px;
+    padding: 5px 5%;
+    color: #fff;
     font-weight: bold;
+    font-weight: 800;
+    
 }
 
 @media only screen and (max-width: 786px) {
     .mypage {
       flex-direction: column;
+      width:100%;
+      border : 2px solid #ffffff7a;
+    }
+    .user-info, .dog-info {
+        font-size: 1.4rem;
     }
     
     .mypage__left {
       width: 100%;
+      height: 100%;
       border-right: none;
-      height: ;
     }
     
     .mypage__profile {
@@ -268,6 +324,40 @@ a {
         margin-bottom: 8px;
         text-align: center;
         align-items: center;    
-        
     }
-  }
+    .mypage__mid {
+      border: 2px solid #ffffff7a;
+      position: relative;
+      margin-bottom: 10%;
+      padding: 10%;
+
+    }
+	.mypage__right {
+      position: relative;
+      padding: 10%;
+
+    }
+/* 비밀번호 확인 일치 유효성검사 */
+.pwck_input_re_1{
+        color : green;
+        display : none;    
+        position: absolute;
+        font-size: x-small;
+        top: 385px;
+        right: 50px;
+}
+.pwck_input_re_2{
+        color : red;
+        display : none; 
+        position: absolute;
+        font-size: x-small;
+        top: 385px;
+        right: 50px;   
+}
+
+.final_pwck_ck{
+    position: absolute;
+    display: none;
+    font-size: x-small;
+    top: 385px;
+}    

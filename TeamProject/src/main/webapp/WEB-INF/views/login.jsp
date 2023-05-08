@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/css/login1.css" />
+    <link rel="stylesheet" href="resources/css/login.css" />
     <script src="/resources/js/login.js"></script>
     <title>Login</title>
     <script
@@ -36,7 +36,7 @@
                     <input type="text" name="user_email" placeholder="Email">
                     <input type="password" name="user_pw" placeholder="비밀번호">
                     <c:if test = "${result == 0 }">
-                    	<div class = "login_warn">사용자 이메일 또는 비밀번호를 잘못 입력하셨습니다.</div>
+                    	<div class = "login_warn">이메일 또는 비밀번호를 잘못 입력하셨습니다.</div>
                     </c:if>
                     	<input type="button" class="login_button" value="로그인">
                     <a href="#">비밀번호를 잊으셨습니까?</a>
@@ -45,16 +45,21 @@
             <div class="form signupform">
                 <form id="join_form" method="post">
                     <h3>회원가입</h3>
-                    <input type="text"  class="input_name" name="user_name" onkeyup="nameCheck" placeholder="이름">
+                    <input type="text"  class="input_name" name="user_name" placeholder="이름">
                     <span class="final_name_ck">이름을 입력해 주세요</span>
-                    <input type="email" class="input_email" name="user_email" onkeyup="emailCheck" placeholder="Email">
+                    <input type="text"  class="input_nickname" name="user_nickname" placeholder="닉네임">
+                    <span class="user_nickname_re_1">사용 가능한 닉네임입니다</span>
+                    <span class="user_nickname_re_2">닉네임이 이미 존재합니다</span>
+                    <span class="final_nickname_ck">닉네임을 입력해 주세요</span>
+                    <input type="text"  class="input_dogname" name="dog_name" placeholder="강아지이름">
+                    <input type="email" class="input_email" name="user_email" placeholder="Email">
                     <span class="user_email_re_1">사용 가능한 이메일입니다</span>
 					<span class="user_email_re_2">이메일이 이미 존재합니다</span>
 					<span class="final_email_ck">이메일을 입력해 주세요</span>
 					<sapn class="mail_input_box_warn"></sapn>
-                    <input type="password" class="input_pw"  name="user_pw" onkeyup="pwCheck" placeholder="비밀번호">
+                    <input type="password" class="input_pw"  name="user_pw" placeholder="비밀번호">
                     <span class="final_pw_ck">비밀번호를 입력해 주세요</span>
-                    <input type="password" class="input_pwck" name="user_pw2" onkeyup="pwckCheck" placeholder="비밀번호 재확인" ><span id ="confirmMsg"></span>
+                    <input type="password" class="input_pwck" name="user_pw2" placeholder="비밀번호 재확인" ><span id ="confirmMsg"></span>
                     <span class="final_pwck_ck">비밀번호 확인을 입력해 주세요</span>
                     <span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
                 	<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
@@ -63,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="return-main"><a href="/withdang/">메인화면으로 돌아가기</a></div>
+    <div class="return-main"><a href="/withdang">메인화면으로 돌아가기</a></div>
     <script>
     	const signin = document.querySelector(".signinbtn");
         const signup = document.querySelector(".signupbtn");
@@ -85,6 +90,8 @@
 	    var pwckCheck = false;            // 비번 확인
 	    var pwckcorCheck = false;        // 비번 확인 일치 확인
 	    var nameCheck = false;            // 이름
+	    var nickNameCheck = false;		 // 닉네임
+	    var nickNameckCheck = false;	// 닉네임 중복
         var pwdCheck = false;			// 비번 정규식 확인	
       	
         $(document).ready(function(){
@@ -96,6 +103,7 @@
         var pw = $('.input_pw').val();                // 비밀번호 입력란
         var pwck = $('.input_pwck').val();            // 비밀번호 확인 입력란
         var name = $('.input_name').val();            // 이름 입력란
+        var nickname = $('.input_nickname').val();			  // 닉네임 입력란
         var pwdCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
         var warnMsg = $(".mail_input_box_warn");    // 이메일 입력 경고글
                
@@ -127,9 +135,6 @@
           }
         
           
-          
-          
-          
           /* 비밀번호 확인 유효성 검사 */
           if(pwck == ""){
               $('.final_pwck_ck').css('display','block');
@@ -148,8 +153,17 @@
               nameCheck = true;
           }
           
+          /* 닉네임 유효성 검사 */
+          if(nickname == ""){
+              $('.final_nickname_ck').css('display','block');
+              nickNameCheck = false;
+          }else{
+              $('.final_nickname_ck').css('display', 'none');
+              nickNameCheck = true;
+          }
+          
           /* 최종 유효성 검사 */
-          if(emailCheck&&emailckCheck&&pwCheck&&pwckCheck&&pwckcorCheck&&nameCheck&&pwdCheck){
+          if(emailCheck&&emailckCheck&&pwCheck&&pwckCheck&&pwckcorCheck&&nameCheck&&pwdCheck&&nickNameCheck&&nickNameckCheck){
    		
           	$("#join_form").attr("action", "/withdang/join");
       		$("#join_form").submit();
@@ -187,6 +201,33 @@
 	}); // ajax 종료	
 
  });// function 종료
+ 
+		//닉네임 중복검사
+		$('.input_nickname').on("propertychange change keyup paste input", function(){
+	
+		/* console.log("keyup 테스트"); */ 	
+		var user_nickname = $('.input_nickname').val();			// .id_input에 입력되는 값
+		var data = {user_nickname : user_nickname}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+	
+		$.ajax({
+		type : "post",
+		url : "/withdang/nickNameCheck",
+		data : data,
+		 success : function(result){
+			 if(result != 'fail'){
+				$('.user_nickname_re_1').css("display","inline-block");
+				$('.user_nickname_re_2').css("display", "none");	
+				nickNameckCheck = true;
+				} else {
+				$('.user_nickname_re_2').css("display","inline-block");
+				$('.user_nickname_re_1').css("display", "none");	
+				nickNameckCheck = false;
+				} 
+				
+			}// success 종료
+	}); // ajax 종료	
+	
+	});// function 종료
    	
    	/* 비밀번호 확인 일치 유효성 검사 */
     
