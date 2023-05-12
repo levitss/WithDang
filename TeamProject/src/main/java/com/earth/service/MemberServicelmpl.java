@@ -21,7 +21,7 @@ public class MemberServicelmpl implements MemberService {
 	MemberMapper membermapper;
 	
 	@Override
-	public void memberJoin(MemberInfoDto member) throws Exception {
+	public void memberJoin(MemberDto member) throws Exception {
 		membermapper.memberJoin(member);
 		
 	}
@@ -32,7 +32,7 @@ public class MemberServicelmpl implements MemberService {
 	}
 
 	@Override
-	public MemberInfoDto memberLogin(MemberInfoDto member) throws Exception {
+	public MemberDto memberLogin(MemberDto member) throws Exception {
 		return membermapper.memberLogin(member);
 	}
 
@@ -42,9 +42,20 @@ public class MemberServicelmpl implements MemberService {
 	}
 
 	@Override
-	public void dogInsert(MemberInfoDto member) throws Exception {
+	public void dogInsert(MemberDto member) throws Exception {
 		membermapper.dogInsert(member);
 		
+	}
+
+	@Override
+	public DogDto dogSelect(DogDto dog) throws Exception {
+		return membermapper.dogSelect(dog);
+	}
+
+	@Override
+	public MemberDto memberCheck(MemberDto member) throws Exception {
+		
+		return membermapper.memberCheck(member);
 	}
 
 

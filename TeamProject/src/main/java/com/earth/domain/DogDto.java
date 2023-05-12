@@ -1,11 +1,16 @@
 package com.earth.domain;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
 public class DogDto {
 	private String dog_name;
-	private String dog_birth;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dog_birth;
 	private String dog_gender;
 	private String dog_nutd;
 	private String dog_breed;

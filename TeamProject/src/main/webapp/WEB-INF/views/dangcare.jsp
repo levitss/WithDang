@@ -56,7 +56,7 @@
         <p></p>
         <div class="petbtn">
             <button type="button" id="petbtn" name="petsitter"><a href="/withdang/petsitter">펫시터 지원합니다.</a></button>
-            <button type="button" id="petbtn" name="pet"><a href="/withdang/petsitter">펫시터 구합니다.</a></button>
+            <button type="button" id="petbtn" name="pet"><a href="/withdang/petsitter-offer">펫시터 구합니다.</a></button>
         </div>
         <div id="care-text" classW="typewriter-effect">
             <div class="text" id="typewriter-text"></div>

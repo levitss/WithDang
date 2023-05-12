@@ -1,5 +1,9 @@
 package com.earth.domain;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +17,8 @@ public class MemberDto {
 	private String user_pw;
 	private String user_name;
 	private String user_pnum;
-	private String user_birth;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date user_birth;
 	private String user_gender;
 	private String user_address;
 	

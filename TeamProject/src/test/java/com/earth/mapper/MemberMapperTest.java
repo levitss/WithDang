@@ -52,8 +52,8 @@ public class MemberMapperTest {
         //member.setUser_email("test1123");
         //member.setUser_pw("test1321321");
         
-        membermapper.memberLogin(member);
-        System.out.println("결과 값 : " + membermapper.memberLogin(member));
+        //membermapper.memberLogin(member);
+        //System.out.println("결과 값 : " + membermapper.memberLogin(member));
         
     }
 	

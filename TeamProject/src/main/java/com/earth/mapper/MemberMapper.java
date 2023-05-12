@@ -10,10 +10,10 @@ import com.earth.domain.MemberDto;
 public interface MemberMapper {
 	
 	//회원가입
-	public void memberJoin(MemberInfoDto member);
+	public void memberJoin(MemberDto member);
 	
 	//강아지 정보 기입
-	public void dogInsert(MemberInfoDto member);
+	public void dogInsert(MemberDto member);
 	
 	// 이메일 중복 검사
 	public int emailCheck(String user_email);
@@ -22,6 +22,12 @@ public interface MemberMapper {
 	public int nickNameCheck(String user_nickname);
 	
 	/* 로그인 */
-    public MemberInfoDto memberLogin(MemberInfoDto member);
+    public MemberDto memberLogin(MemberDto member);
+    
+    //도그정보가져오기
+    public DogDto dogSelect(DogDto dog);
+    
+    //신규회원확인하기
+    public MemberDto memberCheck(MemberDto member);
    
 }

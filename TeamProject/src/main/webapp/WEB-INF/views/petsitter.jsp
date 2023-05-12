@@ -56,42 +56,42 @@
             <section id="user-form">
                 <p>1. 필수정보</p>
                 <p></p>
-                <p name="user-name">●이름
-                <p></p><input type="text" class="input-form" placeholder="실명 입력"></p>
-                <p name="user-birth">●생일
-                <p></p><input type="text" class="input-form" placeholder="생년월일 8자리로 입력">
+                <p>●이름
+                <p></p><input type="text" name="name" class="input-form" placeholder="실명 입력"></p>
+                <p>●생일
+                <p></p><input type="text"  name="birth" class="input-form" placeholder="생년월일 8자리로 입력">
                 <fieldset calss="input-box">
                     <label>
-                        <input type="radio" name="user-gender" value="man">남
-                        <input type="radio" name="user-gender" value="woman">여</p>
+                        <input type="radio" name="gender" value="man">남
+                        <input type="radio" name="gender" value="woman">여</p>
                     </label>
                 </fieldset>
 
-                <p name="user-phone">●연락처
-                <p></p><input type="text" class="input-form" placeholder="숫자로 입력"></p>
-                <p name="user-phone">●거주지 주소
-                <p></p><input type="text" class="input-form" placeholder="시/군/구까지 입력"></p>
+                <p>●연락처
+                <p></p><input type="text"  name="phone" class="input-form" placeholder="숫자로 입력"></p>
+                <p>●거주지 주소
+                <p></p><input type="text"  name="adress" class="input-form" placeholder="시/군/구까지 입력"></p>
                 <p>●거주지 유형</p>
                 
-                        <input type="radio" name="user-residence" value="">20평 이하
-                        <input type="radio" name="user-residence" value="">20평 이상
-                        <input type="radio" name="user-residence" value="">마당 있음
+                        <input type="radio" name="residence" value="">20평 이하
+                        <input type="radio" name="residence" value="">20평 이상
+                        <input type="radio" name="residence" value="">마당 있음
             
                 <p>●본인 포함 가족구성원 흡연 여부</p>
-                <input type="radio" name="user-residence" value="">예
-                <input type="radio" name="user-residence" value="">아니오
+                <input type="radio" name="smoke" value="">예
+                <input type="radio" name="smoke" value="">아니오
                 <br>
                 <hr> <br>
                 <p class="cureer">2. 반려동물 경험 및 경력</p>
                 <p></p>
                 <p>●현재 반려동물이 있습니까?</p>
-                <input type="radio" name="user-residence" value="">있음
-                <input type="radio" name="user-residence" value="">없음
+                <input type="radio" name="pet" value="">있음
+                <input type="radio" name="pet" value="">없음
                 <p>●강아지 반려 경험 유무</p>
-                <input type="radio" name="user-residence" value="">있음
-                <input type="radio" name="user-residence" value="">없음
+                <input type="radio" name="exp" value="">있음
+                <input type="radio" name="exp" value="">없음
                 <p>●기타 반려 경험 유무(상세히 적어주세요.)</p>
-                <textarea style="width:80%; height:100px" class="textarea-form"></textarea>
+                <textarea style="width:80%; height:100px" class="textarea-form" name="etc"></textarea>
 
             </section>
             <button class="sumit-btn">지원하기</button>

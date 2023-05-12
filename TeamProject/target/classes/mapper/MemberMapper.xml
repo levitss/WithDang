@@ -8,14 +8,15 @@
 		</insert>
 		
 		<insert id="dogInsert">
-			insert into tb_doginfo values(#{user_email},#{dog_name})
+			insert into tb_dogInfo (user_email)
+			(
+				select a.user_email
+				from tb_user a left join tb_doginfo b
+				on a.user_email = b.user_email
+				where b.user_email is null
+			)
 		</insert>
 		
-		<!-- 강아지 정보 기입 -->
-		<insert id="dogJoin">
-			insert into tb_doginfo values(#{dog_name},#{dog_birth},#{dog_gender},#{dog_nutd},#{dog_breed},#{dog_regnum},#{dog_address},#{dog_feature})
-		</insert>
-
 		<!-- 아이디 중복검사 -->
   		<select id="emailCheck" resultType="int">
   	
@@ -34,48 +35,24 @@
   	
   		</select>
   		
-  		<!-- 닉네임 중복검사 -->
-  		<select id="dogNameCheck" resultType="int">
-  	
-  		select count(*) 
-  		from dog_info 
-  		where dog_name = #{dog_name}
-  	
-  		</select>
-  		
-  		<select id="memberLogin" resultType="com.earth.domain.MemberInfoDto">
+  		<select id="memberLogin" resultType="MemberDto">
   			select *
-  			from tb_user t
-  			join tb_doginfo d
-  			on t.user_email = d.user_email 
-  			where t.user_email = #{user_email} and t.user_pw = #{user_pw}
+  			from tb_user
+  			where user_email = #{user_email} and user_pw = #{user_pw}
   		</select>
   		
-  		<!-- 회원정보 수정 -->
-		<update id="memberUpdate">
-			UPDATE tb_user SET 
-			user_pw = #{user_pw},
-			user_nickname = #{user_nickname},
-			user_pnum = #{user_pnum},
-			user_birth = #{user_birth},
-			user_gender = #{user_gender},
-			user_address = #{user_address}
-			WHERE user_email = #{user_email}
-		</update>
-		
-		<!-- 강아지 정보 수정 -->
-		<update id="dogUpdate">
-			UPDATE tb_doginfo SET 
-			dog_name = #{dog_name},
-			dog_birth = #{dog_birth},
-			dog_gender = #{dog_gender},
-			dog_nutd = #{dog_nutd},
-			dog_breed = #{dog_breed},
-			dog_regnum = #{dog_regnum},
-			dog_address = #{dog_address},
-			dog_feature = #{dog_feature}
-			WHERE user_email = #{user_email}
-		</update>
+  		<select id="dogSelect" resultType="DogDto">
+  			select *
+  			from tb_dogInfo
+  			where user_email = #{user_email}
+  		</select>
+  		
+  		<select id="memberCheck" resultType="MemberDto">
+  			select user_pnum
+  			from tb_user
+  			where user_email = #{user_email}
+  		</select>
+  		
   </mapper>
 
 

@@ -14,7 +14,11 @@
 		  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		  crossorigin="anonymous">
 	</script>  
-
+	
+	<script language="javascript">
+        function showPopup() { window.open("/withdang/agreement", "회원가입약관", "width=600, height=850, left=350px, top=125px")}
+    </script>  
+    
 </head>
 
 <body>
@@ -33,12 +37,16 @@
             <div class="form signinform">
                 <form id="login_form" method="post">
                     <h3>로그인</h3>
-                    <input type="text" name="user_email" placeholder="Email">
-                    <input type="password" name="user_pw" placeholder="비밀번호">
+                    <input type="text" name="user_email" placeholder="Email" value="${cookie.email.value }" autofocus>
+                    <input id="pwd" type="password" name="user_pw" placeholder="비밀번호">
                     <c:if test = "${result == 0 }">
                     	<div class = "login_warn">이메일 또는 비밀번호를 잘못 입력하셨습니다.</div>
                     </c:if>
+                    <div>
+                    	<div id="label"><input id="chk" type="checkbox" name="rememberEmail" value="on" ${empty cookie.email.value ? "" : "checked"} />이메일 기억</div>
                     	<input type="button" class="login_button" value="로그인">
+                    	<!-- <button type="button" class="login_button" value="로그인"></button> -->
+                    </div>
                     <a href="#">비밀번호를 잊으셨습니까?</a>
                 </form>
             </div>
@@ -51,7 +59,7 @@
                     <span class="user_nickname_re_1">사용 가능한 닉네임입니다</span>
                     <span class="user_nickname_re_2">닉네임이 이미 존재합니다</span>
                     <span class="final_nickname_ck">닉네임을 입력해 주세요</span>
-                    <input type="text"  class="input_dogname" name="dog_name" placeholder="강아지이름">
+                    <!-- <input type="text"  class="input_dogname" name="dog_name" placeholder="강아지이름"> -->
                     <input type="email" class="input_email" name="user_email" placeholder="Email">
                     <span class="user_email_re_1">사용 가능한 이메일입니다</span>
 					<span class="user_email_re_2">이메일이 이미 존재합니다</span>
@@ -59,16 +67,18 @@
 					<sapn class="mail_input_box_warn"></sapn>
                     <input type="password" class="input_pw"  name="user_pw" placeholder="비밀번호">
                     <span class="final_pw_ck">비밀번호를 입력해 주세요</span>
-                    <input type="password" class="input_pwck" name="user_pw2" placeholder="비밀번호 재확인" ><span id ="confirmMsg"></span>
+                    <input id="pwdck" type="password" class="input_pwck" name="user_pw2" placeholder="비밀번호 재확인" ><span id ="confirmMsg"></span>
                     <span class="final_pwck_ck">비밀번호 확인을 입력해 주세요</span>
                     <span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
                 	<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
+                	<div id="register-policy"><input type="checkbox" id="register-check" name="register-check" value="T" onchange="if (this.checked) {showPopup();}" />회원가입 약관에 동의합니다.</div>
                 	<input type="button" class="btn" value="가입하기">
                     </form>
+                    <div id="return" class="return-main"><a href="/withdang">메인화면으로 돌아가기</a></div>
             </div>
         </div>
     </div>
-    <div class="return-main"><a href="/withdang">메인화면으로 돌아가기</a></div>
+    
     <script>
     	const signin = document.querySelector(".signinbtn");
         const signup = document.querySelector(".signupbtn");

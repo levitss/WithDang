@@ -13,10 +13,10 @@ import com.earth.domain.MemberDto;
 public interface MemberService {
 
 	//회원가입
-	public void memberJoin(MemberInfoDto member) throws Exception;
+	public void memberJoin(MemberDto member) throws Exception;
 	
 	//강아지 정보 기입
-	public void dogInsert(MemberInfoDto member) throws Exception;
+	public void dogInsert(MemberDto member) throws Exception;
 	
 	// 이메일 중복 검사
 	public int emailCheck(String user_email) throws Exception;
@@ -25,6 +25,11 @@ public interface MemberService {
 	public int nickNameCheck(String user_nickname) throws Exception;
 	
 	/* 로그인 */
-    public MemberInfoDto memberLogin(MemberInfoDto member) throws Exception;
-           
+    public MemberDto memberLogin(MemberDto member) throws Exception;
+    
+    //도그정보가져오기
+    public DogDto dogSelect(DogDto dog) throws Exception;
+    
+    //신규회원확인하기
+    public MemberDto memberCheck(MemberDto member) throws Exception;
 }

@@ -8,6 +8,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
 body {
     display: flex;
     justify-content: center;
@@ -140,12 +141,38 @@ a {
     margin-bottom: 20px;
 }
 
+#pwdck {
+    border: 1px solid #999;
+    padding: 10px;
+    margin-bottom: 10px;
+    outline: none;   
+}
+
+#register-policy {
+	font-size: 10px;
+}
+
+#register-check {
+    border: 1px solid #999;
+    padding: 1px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+#chk {
+	margin-bottom: 10px;
+}
+
 .form form input[type="button"] {
     max-width: 100px;
     background: #ed8b9e;
     color: #fff;
     border: none;
     cursor: pointer;
+}
+
+#label {
+    font-size: 10px;
 }
 
 .form form input[value="Sign Up"] {
@@ -182,7 +209,7 @@ a {
 	display : none;
 	font-size: x-small;
 	position: absolute;
-	top: 325px;
+	top: 265px;
 	right: 50px;
 	
 }
@@ -192,7 +219,7 @@ a {
 	display : none;
 	font-size: x-small;
 	position: absolute;
-	top: 325px;
+	top: 265px;
 	right: 50px;
 }
 
@@ -255,7 +282,7 @@ a {
         display : none;    
         position: absolute;
         font-size: x-small;
-        top: 445px;
+        top: 385px;
         right: 50px;
 }
 .pwck_input_re_2{
@@ -263,7 +290,7 @@ a {
         display : none; 
         position: absolute;
         font-size: x-small;
-        top: 445px;
+        top: 385px;
         right: 50px;   
 }    
 
@@ -273,5 +300,5 @@ a {
     text-align: center;
     color : red;
     position: absolute;
-    bottom: 128px;
+    bottom: 150px;
 }

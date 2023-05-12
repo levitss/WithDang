@@ -26,9 +26,10 @@ public class MypageController {
 	private MypageService myService;
 	
 	@GetMapping("/mypage")
-	public void mypageGET (MemberInfoDto member, Model m) {
-		MemberInfoDto lvo = new MemberInfoDto();
-		m.addAttribute("lvo", lvo);
+	public void mypageGET () {
+//		HttpSession session = request.getSession();
+//		session.getAttribute("member");
+//		session.getAttribute("dvo");
 	}
 	
 	@GetMapping("/mypage_update")
@@ -36,33 +37,22 @@ public class MypageController {
 		
 	}
 	
-		//회원정보수정
-		@RequestMapping(value = "/mypage_update", method = RequestMethod.POST)
-		public String memberUpdate(HttpServletRequest request, MemberInfoDto member, Model m) throws Exception {
-			
-			System.out.println("memberUpdate 메서드 진입");
-	        System.out.println("전달된 데이터 : " + member);
-	       
-	        myService.memberUpdate(member);
-	        myService.dogUpdate(member);
-	        
-	        HttpSession session = request.getSession();
-			session.setAttribute("member", member);
-//			session.setAttribute("dog", dog);
-			
-			return "redirect:/mypage";
-		}
+	//회원정보수정
+	@RequestMapping(value = "/mypage_update", method = RequestMethod.POST)
+	public String memberUpdate(HttpServletRequest request, MemberDto member, DogDto dog) throws Exception {
 		
-//		@RequestMapping(value = "/dog_update", method = RequestMethod.POST)
-//		public String dogUpdate(HttpServletRequest request, DogVo dog) throws Exception {
-//			System.out.println("dogUpdate 메서드 진입");
-//			System.out.println("전달된 데이터 : " + dog);
-//			
-//			memberservice.dogUpdate(dog);
-//			
-//			HttpSession session = request.getSession();
-//			session.setAttribute("dog", dog);
-//			
-//			return "redirect:/mypage";
-//		}
-}
+		System.out.println("memberUpdate 메서드 진입");
+        System.out.println("전달된 데이터 : " + member);
+       
+        myService.memberUpdate(member);
+        myService.dogUpdate(dog);
+        MemberDto mvo = myService.memberSelect(member);
+        DogDto dvo = myService.dogSelect(dog);
+        
+        HttpSession session = request.getSession();
+		session.setAttribute("member", mvo);
+		session.setAttribute("dvo", dvo);
+		
+		return "redirect:/mypage";
+	}
+}	
