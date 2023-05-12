@@ -22,7 +22,7 @@ public class RegisterController {
 		
 		@GetMapping("/agreement")
 		public String agreeMentGET() {
-			return "/agreement";
+			return "agreement";
 		}
 	
 		//회원가입 서비스 실행

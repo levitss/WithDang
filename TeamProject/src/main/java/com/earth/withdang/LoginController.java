@@ -35,17 +35,12 @@ public class LoginController {
 	
 	@Autowired
 	private MemberService memberservice;
-	
-	@GetMapping(value = "/")
-	public String mainPageGET() {
-		return "/main";
-		
-	}
+
 	
 	@GetMapping(value="/login")
 	public String loginGET() {
 		
-		return "/login";
+		return "login";
 	}
 	
 	/* 로그인 */
